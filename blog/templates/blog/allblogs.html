@@ -1,7 +1,6 @@
 <!doctype html>
-
-<html lang="en">
 {% load static %}
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +16,7 @@
 
   <style>
   .bd-placeholder-img {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     text-anchor: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -51,27 +50,24 @@
 
   <main role="main">
     <div class="container">
+    <br />
+    <h2 class="text-center pt-3">{{ blog.title }}</h2>
+    <br />
+    <br />
+    <h3>Lastest Posts</h3s>
+    <hr />
 
-      <h1 class="text-center pt-3"> Welcome to Lucy's Blog</h1>
-      <br />
-      <br />
-      <h2>Latest Posts</h2>
-      <hr />
+    {% for blog in blogs.all %}
+    <a href="{% url 'detail' blog.id %}" class="text-secondary"><h4>{{ blog.title }}</h4></a>
+    <h5>{{ blog.pub_date_pretty }}</h5>
+    <br />
+    <img src="{{ blog.image.url }}" height =200/>
+    <br />
+    <p> {{ blog.summary }} <a href="{% url 'detail' blog.id%}" class="text-secondary">Read more...</a></p>
+    <hr />
+    {% endfor %}
 
-      {% for blog in blogs.all %}
-
-      <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
-      {{ blog.pub_date_pretty }}
-      <br />
-      <img class="img-fluid" src="{{ blog.image.url }}" height =200 width=100/>
-      <br />
-      <p>{{ blog.summary }}</p>
-
-
-      {% endfor %}
-
-    </div>
-
+  </div>
   </main>
 
   <footer class="text-muted">

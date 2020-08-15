@@ -10,7 +10,7 @@ class Blog(models.Model):
         return self.title
 
     def summary(self):
-        return self.body[:45]
+        return self.body[:55]
     def pub_date_pretty(self):
-        return self.pub_date.strftime('%m %e %Y')
+        return self.pub_date.strftime('%m-%e-%Y')
 # Add to the admin
